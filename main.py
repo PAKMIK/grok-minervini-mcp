@@ -1,4 +1,4 @@
-# cache-bust: force clean rebuild to ensure all dependencies are installed
+# build-timestamp: 2025-01-31T00:00:00Z — force clean rebuild, install all deps from requirements.txt
 from fastmcp import FastMCP
 from fastapi import FastAPI
 from polygon import RESTClient
