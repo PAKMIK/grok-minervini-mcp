@@ -1,0 +1,4 @@
+fastmcp
+polygon-api-client
+python-dotenv
+uvicorn
