@@ -1,5 +1,5 @@
+fastapi
+uvicorn
 fastmcp
 polygon-api-client
 python-dotenv
-uvicorn
-fastapi

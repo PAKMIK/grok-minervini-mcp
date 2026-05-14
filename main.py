@@ -1,6 +1,5 @@
-# cache-bust: force clean rebuild to ensure all dependencies are installed
-from fastmcp import FastMCP
 from fastapi import FastAPI
+from fastmcp import FastMCP
 from polygon import RESTClient
 from dotenv import load_dotenv
 import os
@@ -28,7 +27,6 @@ def get_fundamentals(ticker: str) -> Dict[str, Any]:
     except Exception as e:
         return {"error": str(e)}
 
-# Esto es lo importante para Railway
 app = FastAPI()
 app.mount("/", mcp.http_app())
 
