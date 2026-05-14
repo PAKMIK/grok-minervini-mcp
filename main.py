@@ -1,3 +1,4 @@
+# cache-bust: force clean rebuild to ensure all dependencies are installed
 from fastmcp import FastMCP
 from fastapi import FastAPI
 from polygon import RESTClient
