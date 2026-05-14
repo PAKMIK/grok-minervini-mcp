@@ -1,3 +1,4 @@
+# cache-bust: force clean rebuild to ensure all dependencies are installed
 from fastmcp import FastMCP
 from fastapi import FastAPI
 from polygon import RESTClient
@@ -6,12 +7,14 @@ import os
 from typing import Dict, Any
 
 load_dotenv()
+
 client = RESTClient(api_key=os.getenv("POLYGON_API_KEY"))
+
 mcp = FastMCP()
 
 @mcp.tool
 def get_fundamentals(ticker: str) -> Dict[str, Any]:
-    """Datos fundamentales para analizar empresas (EPS, ventas, márgenes) estilo Minervini"""
+    """Datos fundamentales para análisis SEPA/Minervini"""
     try:
         snapshot = client.get_snapshot(ticker.upper())
         return {

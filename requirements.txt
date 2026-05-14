@@ -3,3 +3,4 @@ fastapi
 polygon-api-client
 python-dotenv
 uvicorn
+fastapi
