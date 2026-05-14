@@ -1,10 +1,9 @@
 from fastmcp import FastMCP
+from fastapi import FastAPI
 from polygon import RESTClient
 from dotenv import load_dotenv
 import os
 from typing import Dict, Any
-from fastapi import FastAPI
-import uvicorn
 
 load_dotenv()
 
@@ -28,9 +27,12 @@ def get_fundamentals(ticker: str) -> Dict[str, Any]:
     except Exception as e:
         return {"error": str(e)}
 
-# Crear app FastAPI + MCP (obligatorio para Railway)
+# Esto es lo importante para Railway
 app = FastAPI()
-app.mount("/", mcp.app)   # Esto es lo que faltaba
+app.mount("/", mcp.http_app())
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
+    import uvicorn
+    port = int(os.getenv("PORT", 8000))
+    print(f"🚀 SEPA Minervini MCP corriendo en puerto {port}")
+    uvicorn.run(app, host="0.0.0.0", port=port)
